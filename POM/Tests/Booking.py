@@ -39,10 +39,12 @@ class BookingTest(unittest.TestCase):
         self.driver.find_element_by_xpath("//button[contains(@class,'sb-searchbox__button')]").click()
         self.driver.find_element_by_xpath("//a[contains(text(),'Price (lowest first)')]").click()
         time.sleep(10)
+        self.driver.find_element_by_xpath("//div[@id='hotellist_inner']//div[1]//div[2]//div[3]//div[1]//div[1]//div[1]//div[1]//div[2]//div[3]//div[1]//div[1]//div[1]//a[1]").click()
+        self.driver.find_element_by_id("b_tt_holder_1").click()
+        time.sleep(10)
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
-        cls.driver.quit()
         print("Test Completed")
 
 
