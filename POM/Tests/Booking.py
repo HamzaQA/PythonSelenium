@@ -1,7 +1,8 @@
+from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 import unittest
 import time
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 
@@ -40,7 +41,12 @@ class BookingTest(unittest.TestCase):
         self.driver.find_element_by_xpath("//a[contains(text(),'Price (lowest first)')]").click()
         time.sleep(10)
         self.driver.find_element_by_xpath("//div[@id='hotellist_inner']//div[1]//div[2]//div[3]//div[1]//div[1]//div[1]//div[1]//div[2]//div[3]//div[1]//div[1]//div[1]//a[1]").click()
-        self.driver.find_element_by_id("b_tt_holder_1").click()
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.implicitly_wait(10)
+        self.driver.find_element_by_xpath("//div[@id='wrap-hotelpage-top']//form[@id='top-book']//button[@id='hp_book_now_button']//span[@class='bui-button__text']").click()
+        # element = "hp_book_now_button"
+        # WebDriverWait(self, 10).until(EC.presence_of_element_located(self.driver.find_element_by_id(element)))
+        # self.driver.find_element_by_id(element).click()
         time.sleep(10)
     @classmethod
     def tearDownClass(cls):
